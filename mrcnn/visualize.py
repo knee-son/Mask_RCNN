@@ -98,11 +98,11 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     captions: (optional) A list of strings to use as captions for each object
     """
     # Number of instances
-    N = boxes.shape[0]
+    N = np.shape(boxes)[0]
     if not N:
         print("\n*** No instances to display *** \n")
     else:
-        assert boxes.shape[0] == masks.shape[-1] == class_ids.shape[0]
+        assert np.shape(boxes)[0] == np.shape(masks)[-1] == np.shape(class_ids)[0]
 
     # If no axis is passed, create one and automatically call show()
     auto_show = False
