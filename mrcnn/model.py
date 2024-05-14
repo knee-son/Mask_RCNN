@@ -2118,7 +2118,7 @@ class MaskRCNN():
         except ImportError:
             # Keras before 2.2 used the 'topology' namespace.
             # from keras.engine import topology as saving
-            from tensorflow.compat.v1.python.keras.saving import hdf5_format as saving
+	    from tensorflow.compat.v1.keras.saving import hdf5_format as saving
             # from tensorflow.python.keras.saving import hdf5_format as saving
 
         if exclude:
