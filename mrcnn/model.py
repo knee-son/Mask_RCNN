@@ -17,11 +17,16 @@ from collections import OrderedDict
 import multiprocessing
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import backend as K
-from tensorflow.keras import layers as KL
-from tensorflow.keras import layers as KE
-from tensorflow.keras import models as KM
+import keras
+import keras.backend as K
+import keras.layers as KL
+import keras.layers as KE
+import keras.models as KM
+# from tensorflow import keras
+# from tensorflow.keras import backend as K
+# from tensorflow.keras import layers as KL
+# from tensorflow.keras import layers as KE
+# from tensorflow.keras import models as KM
 
 from mrcnn import utils
 
@@ -2136,7 +2141,8 @@ class MaskRCNN():
 
         if by_name:
             saving.load_weights_from_hdf5_group_by_name(f, layers)
-          # hdf5_format.load_weights_from_hdf5_group(f, layers)
+            # saving.load_weights_from_hdf5_group(f, layers)
+            # hdf5_format.load_weights_from_hdf5_group(f, layers)
         else:
             saving.load_weights_from_hdf5_group(f, layers)
         if hasattr(f, 'close'):
