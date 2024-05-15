@@ -22,11 +22,11 @@ import tensorflow as tf
 # import keras.layers as KL
 # import keras.layers as KE
 # import keras.models as KM
-from tensorflow import keras
-from tensorflow.keras import backend as K
-from tensorflow.keras import layers as KL
-from tensorflow.keras import layers as KE
-from tensorflow.keras import models as KM
+from tf import keras
+from tf.keras import backend as K
+from tf.keras import layers as KL
+from tf.keras import layers as KE
+from tf.keras import models as KM
 
 from mrcnn import utils
 
