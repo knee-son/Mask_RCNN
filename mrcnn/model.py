@@ -23,8 +23,6 @@ import keras.layers as KL
 import keras.layers as KE
 import keras.models as KM
 
-tf.compat.v1.disable_v2_behavior()
-
 from mrcnn import utils
 
 # Requires TensorFlow 1.3+ and Keras 2.0.8+.
@@ -938,7 +936,7 @@ def fpn_classifier_graph(rois, feature_maps, image_meta,
     x = KL.Activation('relu')(x)
 
     shared = KL.Lambda(lambda x: K.squeeze(K.squeeze(x, 3), 2),
-                       output_shape=(1000, 1024), name="pool_squeeze")(x)
+                       name="pool_squeeze")(x)
 
     # Classifier head
     mrcnn_class_logits = KL.TimeDistributed(KL.Dense(num_classes),
@@ -951,7 +949,7 @@ def fpn_classifier_graph(rois, feature_maps, image_meta,
     x = KL.TimeDistributed(KL.Dense(num_classes * 4, activation='linear'),
                            name='mrcnn_bbox_fc')(shared)
     # Reshape to [batch, num_rois, NUM_CLASSES, (dy, dx, log(dh), log(dw))]
-    s = tf.compat.v1.keras.backend.int_shape(x)
+    s = K.int_shape(x)
     # mrcnn_bbox = KL.Reshape((s[1], num_classes, 4), name="mrcnn_bbox")(x)
     mrcnn_bbox = KL.Reshape((-1, num_classes, 4), name="mrcnn_bbox")(x)
 
