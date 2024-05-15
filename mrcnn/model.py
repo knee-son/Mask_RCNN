@@ -2116,7 +2116,7 @@ class MaskRCNN():
         try:
             from keras.engine import saving
         except ImportError:
-            from tensorflow.compat.v1.keras.saving import hdf5_format as saving
+            from tensorflow.compat.v1.keras.models import load_model as saving
 
         if exclude:
             by_name = True
